@@ -53,3 +53,11 @@ curl -X POST "http://127.0.0.1:8000/films/" -H "Content-Type: application/json" 
   "genre": "Sci-Fi"
 }'
 ```
+
+
+DELETE http://127.0.0.1:8000/films/1
+GET /films/year/2001
+
+GET /films/title/Harry Potter
+
+GET /films/author/J.K. Rowling

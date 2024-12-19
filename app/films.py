@@ -60,3 +60,12 @@ def get_films_by_year(year: int, db: Session = Depends(get_db)):
     if not db_films:
         raise HTTPException(status_code=404, detail="Films from this year not found")
     return db_films
+
+@router.delete("/{film_id}", response_model=Films)
+def delete_film(film_id: int, db: Session = Depends(get_db)):
+    db_film = db.query(Film).filter(Film.id == film_id).first()
+    if db_film is None:
+        raise HTTPException(status_code=404, detail="Film not found")
+    db.delete(db_film)
+    db.commit()
+    return db_film
